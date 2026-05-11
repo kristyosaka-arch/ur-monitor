@@ -1,5 +1,4 @@
 import requests
-from bs4 import BeautifulSoup
 import os
 import json
 
@@ -11,12 +10,13 @@ SAVE_FILE = "status.json"
 HEADERS = {
     "User-Agent": "Mozilla/5.0"
 }
-    DANCHI = {
+
+DANCHI = {
 
     "アーベインビオ川崎":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_2600.html",
 
-    "川崎河边":
+    "フレール川崎大師":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_4120.html",
 
     "コンフォール川崎富士見":
@@ -49,11 +49,11 @@ messages = []
 for name, url in DANCHI.items():
 
     try:
+
         r = requests.get(url, headers=HEADERS, timeout=20)
 
         html = r.text
 
-        # 判断状态
         if "空室なし" in html:
             status = "无空房"
 
@@ -67,7 +67,6 @@ for name, url in DANCHI.items():
 
         old = old_status.get(name)
 
-        # 状态变化才通知
         if old != status:
 
             msg = f"""
@@ -99,7 +98,7 @@ for m in messages:
         }
     )
 
-# ===== 保存新状态 =====
+# ===== 保存状态 =====
 
 with open(SAVE_FILE, "w", encoding="utf-8") as f:
     json.dump(new_status, f, ensure_ascii=False, indent=2)

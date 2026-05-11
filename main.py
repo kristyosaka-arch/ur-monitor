@@ -11,16 +11,25 @@ SAVE_FILE = "status.json"
 HEADERS = {
     "User-Agent": "Mozilla/5.0"
 }
+    DANCHI = {
 
-DANCHI = {
     "アーベインビオ川崎":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_2600.html",
 
-    "フレール川崎大師":
+    "川崎河边":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_4120.html",
 
     "コンフォール川崎富士見":
-        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_4020.html"
+        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_4020.html",
+
+    "亀戸二丁目":
+        "https://www.ur-net.go.jp/chintai/kanto/tokyo/20_1660.html",
+
+    "大島四丁目":
+        "https://www.ur-net.go.jp/chintai/kanto/tokyo/20_1780.html",
+
+    "大島六丁目":
+        "https://www.ur-net.go.jp/chintai/kanto/tokyo/20_1920.html"
 }
 
 # ===== 读取旧状态 =====

@@ -28,14 +28,33 @@ jobs:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
         run: python main.py
+        name: UR Monitor
 
-      - name: Commit rooms.json
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
+on:
+  schedule:
+    - cron: "*/10 * * * *"
 
-          git add rooms.json || true
+  workflow_dispatch:
 
-          git commit -m "update rooms" || true
+jobs:
+  check:
+    runs-on: ubuntu-latest
 
-          git push
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install packages
+        run: pip install requests beautifulsoup4
+
+      - name: Run monitor
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+        run: python main.py

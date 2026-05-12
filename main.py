@@ -35,9 +35,12 @@ DANCHI = {
 # ===== 读取旧状态 =====
 
 if os.path.exists(SAVE_FILE):
+
     with open(SAVE_FILE, "r", encoding="utf-8") as f:
         old_status = json.load(f)
+
 else:
+
     old_status = {}
 
 new_status = {}
@@ -50,32 +53,40 @@ for name, url in DANCHI.items():
 
     try:
 
-        r = requests.get(url, headers=HEADERS, timeout=20)
+        r = requests.get(
+            url,
+            headers=HEADERS,
+            timeout=20
+        )
 
         html = r.text
 
+        # ===== 判断状态 =====
+
         if "空室なし" in html:
+
             status = "无空房"
 
         elif "募集中" in html or "空室あり" in html:
+
             status = "有空房"
 
         else:
+
             status = "状态未知"
 
         new_status[name] = status
 
         old = old_status.get(name)
 
-        if old != status:
+        # ===== 只有出现空房才通知 =====
+
+        if old != status and status == "有空房":
 
             msg = f"""
-🏠 UR状态变化！
+🏠 UR出现空房！
 
 {name}
-
-现在状态：
-{status}
 
 {url}
 """
@@ -84,9 +95,9 @@ for name, url in DANCHI.items():
 
     except Exception as e:
 
-        messages.append(f"{name} 检查失败: {e}")
+        print(f"{name} 检查失败: {e}")
 
-# ===== 发送 Telegram =====
+# ===== Telegram通知 =====
 
 for m in messages:
 
@@ -101,6 +112,12 @@ for m in messages:
 # ===== 保存状态 =====
 
 with open(SAVE_FILE, "w", encoding="utf-8") as f:
-    json.dump(new_status, f, ensure_ascii=False, indent=2)
+
+    json.dump(
+        new_status,
+        f,
+        ensure_ascii=False,
+        indent=2
+    )
 
 print("检查完成")

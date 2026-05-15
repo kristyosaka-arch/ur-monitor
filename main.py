@@ -29,9 +29,9 @@ DANCHI = {
         "https://www.ur-net.go.jp/chintai/kanto/tokyo/20_1780.html",
 
     "大島六丁目":
-        "https://www.ur-net.go.jp/chintai/kanto/tokyo/20_1920.html"
-    
-        "鶴見町第二":
+        "https://www.ur-net.go.jp/chintai/kanto/tokyo/20_1920.html",
+
+    "鶴見町第二":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_1770.html",
 
     "鶴見町":

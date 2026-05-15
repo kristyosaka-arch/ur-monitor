@@ -30,6 +30,15 @@ DANCHI = {
 
     "大島六丁目":
         "https://www.ur-net.go.jp/chintai/kanto/tokyo/20_1920.html"
+    
+        "鶴見町第二":
+        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_1770.html",
+
+    "鶴見町":
+        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_1510.html",
+
+    "ステラ月見ヶ丘":
+        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_3400.html"
 }
 
 # ===== 读取旧状态 =====

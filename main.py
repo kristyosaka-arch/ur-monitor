@@ -70,13 +70,20 @@ for name, url in DANCHI.items():
 
         html = r.text
 
-        # ===== 判断状态 =====
+        # ===== 判断是否有空房 =====
 
         if "空室なし" in html:
 
             status = "无空房"
 
-        elif "募集中" in html or "空室あり" in html:
+        elif (
+            "募集中" in html
+            or "空室あり" in html
+            or "空室一覧" in html
+            or "申込受付中" in html
+            or "家賃" in html
+            or "間取り" in html
+        ):
 
             status = "有空房"
 
@@ -88,7 +95,7 @@ for name, url in DANCHI.items():
 
         old = old_status.get(name)
 
-        # ===== 只有出现空房才通知 =====
+        # ===== 只有新出现空房才通知 =====
 
         if old != status and status == "有空房":
 

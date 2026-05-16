@@ -70,22 +70,19 @@ for name, url in DANCHI.items():
 
         html = r.text
 
-        # ===== 判断是否有空房 =====
+        # ===== 判断是否有真实房源 =====
 
-        if "空室なし" in html:
-
-            status = "无空房"
-
-        elif (
-            "募集中" in html
-            or "空室あり" in html
-            or "空室一覧" in html
-            or "申込受付中" in html
-            or "家賃" in html
-            or "間取り" in html
+        if (
+            "/chintai/room/" in html
+            or "room_list" in html
+            or "空室情報" in html
         ):
 
             status = "有空房"
+
+        elif "空室なし" in html:
+
+            status = "无空房"
 
         else:
 

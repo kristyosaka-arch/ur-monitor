@@ -1,3 +1,7 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+import time
 import requests
 import os
 import json
@@ -6,10 +10,6 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 
 SAVE_FILE = "status.json"
-
-HEADERS = {
-    "User-Agent": "Mozilla/5.0"
-}
 
 DANCHI = {
 
@@ -56,26 +56,35 @@ new_status = {}
 
 messages = []
 
-# ===== 检查每个团地 =====
+# ===== Selenium设置 =====
+
+options = Options()
+
+options.add_argument("--headless")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+
+driver = webdriver.Chrome(options=options)
+
+# ===== 检查团地 =====
 
 for name, url in DANCHI.items():
 
     try:
 
-        r = requests.get(
-            url,
-            headers=HEADERS,
-            timeout=20
-        )
+        driver.get(url)
 
-        html = r.text
+        time.sleep(5)
 
-        # ===== 判断是否有真实房源 =====
+        html = driver.page_source
+
+        # ===== 判断是否有空房 =====
 
         if (
-            "/chintai/room/" in html
-            or "room_list" in html
-            or "空室情報" in html
+            "空室情報" in html
+            or "募集中" in html
+            or "空室一覧" in html
+            or "/chintai/room/" in html
         ):
 
             status = "有空房"
@@ -88,11 +97,13 @@ for name, url in DANCHI.items():
 
             status = "状态未知"
 
+        print(name, status)
+
         new_status[name] = status
 
         old = old_status.get(name)
 
-        # ===== 只有新出现空房才通知 =====
+        # ===== 新出现空房才通知 =====
 
         if old != status and status == "有空房":
 
@@ -108,7 +119,9 @@ for name, url in DANCHI.items():
 
     except Exception as e:
 
-        print(f"{name} 检查失败: {e}")
+        print(name, e)
+
+driver.quit()
 
 # ===== Telegram通知 =====
 

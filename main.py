@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
 import time
 import requests
 import os
@@ -78,14 +77,9 @@ for name, url in DANCHI.items():
 
         html = driver.page_source
 
-        # ===== 判断是否有空房 =====
+        # ===== 真正检测房间链接 =====
 
-        if (
-            "空室情報" in html
-            or "募集中" in html
-            or "空室一覧" in html
-            or "/chintai/room/" in html
-        ):
+        if "/chintai/room/" in html:
 
             status = "有空房"
 
@@ -103,7 +97,7 @@ for name, url in DANCHI.items():
 
         old = old_status.get(name)
 
-        # ===== 新出现空房才通知 =====
+        # ===== 只有新出现空房才通知 =====
 
         if old != status and status == "有空房":
 

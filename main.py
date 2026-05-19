@@ -4,6 +4,7 @@ import time
 import requests
 import os
 import json
+import re
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
@@ -77,15 +78,21 @@ for name, url in DANCHI.items():
 
         html = driver.page_source
 
-        # ===== 真正检测房间链接 =====
+        # ===== 检测空室数字 =====
 
-        if "/chintai/room/" in html:
+        match = re.search(r"空室\s*(\d+)", html)
 
-            status = "有空房"
+        if match:
 
-        elif "空室なし" in html:
+            count = int(match.group(1))
 
-            status = "无空房"
+            if count > 0:
+
+                status = f"有空房（{count}室）"
+
+            else:
+
+                status = "无空房"
 
         else:
 
@@ -97,14 +104,17 @@ for name, url in DANCHI.items():
 
         old = old_status.get(name)
 
-        # ===== 只有新出现空房才通知 =====
+        # ===== 新出现空房才通知 =====
 
-        if old != status and status == "有空房":
+        if old != status and "有空房" in status:
 
             msg = f"""
 🏠 UR出现空房！
 
 {name}
+
+当前状态：
+{status}
 
 {url}
 """

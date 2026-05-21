@@ -16,29 +16,56 @@ DANCHI = {
     "アーベインビオ川崎":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_2600.html",
 
+    "アーベインビオ川崎_room":
+        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_2600_room.html",
+
     "フレール川崎大師":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_4120.html",
+
+    "フレール川崎大師_room":
+        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_4120_room.html",
 
     "コンフォール川崎富士見":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_4020.html",
 
+    "コンフォール川崎富士見_room":
+        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_4020_room.html",
+
     "亀戸二丁目":
         "https://www.ur-net.go.jp/chintai/kanto/tokyo/20_1660.html",
+
+    "亀戸二丁目_room":
+        "https://www.ur-net.go.jp/chintai/kanto/tokyo/20_1660_room.html",
 
     "大島四丁目":
         "https://www.ur-net.go.jp/chintai/kanto/tokyo/20_1780.html",
 
+    "大島四丁目_room":
+        "https://www.ur-net.go.jp/chintai/kanto/tokyo/20_1780_room.html",
+
     "大島六丁目":
         "https://www.ur-net.go.jp/chintai/kanto/tokyo/20_1920.html",
+
+    "大島六丁目_room":
+        "https://www.ur-net.go.jp/chintai/kanto/tokyo/20_1920_room.html",
 
     "鶴見町第二":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_1770.html",
 
+    "鶴見町第二_room":
+        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_1770_room.html",
+
     "鶴見町":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_1510.html",
 
+    "鶴見町_room":
+        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_1510_room.html",
+
     "ステラ月見ヶ丘":
-        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_3400.html"
+        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_3400.html",
+
+    "ステラ月見ヶ丘_room":
+        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_3400_room.html"
 }
 
 # ===== 读取旧状态 =====

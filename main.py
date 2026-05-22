@@ -8,7 +8,6 @@ import time
 import requests
 import os
 import json
-import re
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
@@ -105,8 +104,6 @@ for name, url in DANCHI.items():
 
         driver.get(url)
 
-        # ===== 等待网页加载 =====
-
         try:
 
             WebDriverWait(driver, 15).until(
@@ -122,21 +119,15 @@ for name, url in DANCHI.items():
 
         html = driver.page_source
 
-        # ===== 检测空室数字 =====
+        # ===== 判断有无房 =====
 
-        match = re.search(r"空室\s*(\d+)", html)
+        if "ご案内できるお部屋がございません" in html:
 
-        if match:
+            status = "无空房"
 
-            count = int(match.group(1))
+        elif "外観・室内写真等は撮影時のもの" in html:
 
-            if count > 0:
-
-                status = f"有空房（{count}室）"
-
-            else:
-
-                status = "无空房"
+            status = "有空房"
 
         else:
 
@@ -150,15 +141,12 @@ for name, url in DANCHI.items():
 
         # ===== 新出现空房才通知 =====
 
-        if old != status and "有空房" in status:
+        if old != status and status == "有空房":
 
             msg = f"""
 🏠 UR出现空房！
 
 {name}
-
-当前状态：
-{status}
 
 {url}
 """

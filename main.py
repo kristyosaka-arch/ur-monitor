@@ -1,5 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 import time
 import requests
 import os
@@ -101,7 +105,20 @@ for name, url in DANCHI.items():
 
         driver.get(url)
 
-        time.sleep(5)
+        # ===== 等待网页加载 =====
+
+        try:
+
+            WebDriverWait(driver, 15).until(
+                EC.presence_of_element_located(
+                    (By.TAG_NAME, "body")
+                )
+            )
+
+        except:
+            pass
+
+        time.sleep(3)
 
         html = driver.page_source
 

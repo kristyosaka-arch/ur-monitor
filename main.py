@@ -104,6 +104,8 @@ for name, url in DANCHI.items():
 
         driver.get(url)
 
+        # ===== 等待网页加载 =====
+
         try:
 
             WebDriverWait(driver, 15).until(
@@ -115,9 +117,14 @@ for name, url in DANCHI.items():
         except:
             pass
 
-        time.sleep(3)
+        time.sleep(5)
 
-        html = driver.page_source
+        # ===== 读取真正显示文字 =====
+
+        html = driver.find_element(By.TAG_NAME, "body").text
+
+        print(name)
+        print(html)
 
         # ===== 判断有无房 =====
 

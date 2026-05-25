@@ -22,10 +22,10 @@ DANCHI = {
     "アーベインビオ川崎_room":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_2600_room.html",
 
-    "フレール川崎大師":
+    "川崎":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_4120.html",
 
-    "フレール川崎大師_room":
+    "川崎_room":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_4120_room.html",
 
     "コンフォール川崎富士見":
@@ -64,11 +64,6 @@ DANCHI = {
     "鶴見町_room":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_1510_room.html",
 
-    "ステラ月見ヶ丘":
-        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_3400.html",
-
-    "ステラ月見ヶ丘_room":
-        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_3400_room.html"
 }
 
 # ===== 读取旧状态 =====

@@ -22,10 +22,10 @@ DANCHI = {
     "アーベインビオ川崎_room":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_2600_room.html",
 
-    "川崎":
+    "フレール川崎大師":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_4120.html",
 
-    "川崎_room":
+    "フレール川崎大師_room":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_4120_room.html",
 
     "コンフォール川崎富士見":
@@ -62,8 +62,7 @@ DANCHI = {
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_1510.html",
 
     "鶴見町_room":
-        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_1510_room.html",
-
+        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_1510_room.html"
 }
 
 # ===== 读取旧状态 =====
@@ -114,7 +113,7 @@ for name, url in DANCHI.items():
 
         time.sleep(5)
 
-        # ===== 读取真正显示文字 =====
+        # ===== 读取网页真实显示文字 =====
 
         html = driver.find_element(By.TAG_NAME, "body").text
 
@@ -123,13 +122,13 @@ for name, url in DANCHI.items():
 
         # ===== 判断有无房 =====
 
-        if "ご案内できるお部屋がございません" in html:
-
-            status = "无空房"
-
-        elif "外観・室内写真等は撮影時のもの" in html:
+        if "空室は前日以前の状況です" in html:
 
             status = "有空房"
+
+        elif "ご案内できるお部屋がございません" in html:
+
+            status = "无空房"
 
         else:
 

@@ -16,13 +16,13 @@ SAVE_FILE = "status.json"
 
 DANCHI = {
 
-    "川崎":
+    "川崎旭町ハイツ":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_2600.html",
 
-    "川崎河边":
+    "コンフォール川崎富士見":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_4120.html",
 
-    "川崎富士见":
+    "アーベインビオ川崎":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_4020.html",
 
     "龟户二丁目":

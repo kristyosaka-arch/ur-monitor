@@ -27,6 +27,9 @@ DANCHI = {
     
     "川崎日進":
         "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_1830.html",
+    
+    "サンスクエア川崎":
+        "https://www.ur-net.go.jp/chintai/kanto/kanagawa/40_2190.html",
 
     "龟户二丁目":
         "https://www.ur-net.go.jp/chintai/kanto/tokyo/20_1660.html",
